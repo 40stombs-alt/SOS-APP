@@ -509,7 +509,7 @@ export async function callAI(message, imageBase64 = null, knowledgeContext = '',
 
   // In dev: Vite proxy rewrites /api/claude → api.anthropic.com (key from .env)
   // In production: Netlify redirects /api/claude → /.netlify/functions/claude (key from env var)
-  const res = await fetch('/api/claude/v1/messages', {
+  const res = await fetch('/api/claude', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

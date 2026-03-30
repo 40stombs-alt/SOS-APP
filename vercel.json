@@ -1,8 +1,4 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "rewrites": [
-    { "source": "/api/whatsapp", "destination": "/api/whatsapp" },
-    { "source": "/api/claude/(.*)", "destination": "/api/claude" }
-  ]
+  "outputDirectory": "dist"
 }
