@@ -3,7 +3,7 @@
  * Full re-integration pass: all UI interactions + live Supabase data layer.
  */
 
-import { JobCards, Parts, Announcements, Logs, Users, PerformanceStats, Threads, KnowledgeBase, callAI, healthCheck, getCurrentAuth } from './supabase.js';
+import { JobCards, Parts, Announcements, Logs, Users, PerformanceStats, Threads, KnowledgeBase, callAI, healthCheck, getCurrentAuth, subscribeAnnouncements } from './supabase.js';
 
 // ─── GLOBAL SCOPE: expose helpers for inline onclick attributes in HTML ───
 window.attendJob       = attendJob;
@@ -367,8 +367,10 @@ function initNoticeBoard() {
 
     if (!openBtn || !modal) return;
 
-    let selectedCrit    = 'news';
-    let autoRefreshTimer = null;
+    let selectedCrit       = 'news';
+    let autoRefreshTimer   = null;
+    let unsubscribeRealtime = null;
+    let currentNotices     = [];
 
     // ── Criticality selector ──
     const activeCritClasses = {
@@ -399,7 +401,12 @@ function initNoticeBoard() {
         content?.classList.remove('scale-95');
         content?.classList.add('scale-100');
         await loadFeed();
-        autoRefreshTimer = setInterval(loadFeed, 30_000);
+        // Live Realtime feed — prepend new WhatsApp notices instantly
+        unsubscribeRealtime = subscribeAnnouncements((newRow) => {
+            renderFeed([newRow, ...currentNotices]);
+        });
+        // Fallback poll every 60s in case WebSocket drops
+        autoRefreshTimer = setInterval(loadFeed, 60_000);
     };
 
     const close = () => {
@@ -407,6 +414,8 @@ function initNoticeBoard() {
         content?.classList.remove('scale-100');
         content?.classList.add('scale-95');
         clearInterval(autoRefreshTimer);
+        unsubscribeRealtime?.();
+        unsubscribeRealtime = null;
     };
 
     openBtn .addEventListener('click', open);
@@ -422,7 +431,8 @@ function initNoticeBoard() {
 
         try {
             const notices = await Announcements.list(20);
-            renderFeed(notices || []);
+            currentNotices = notices || [];
+            renderFeed(currentNotices);
         } catch (e) {
             console.error('[S.O.S] Announcements fetch failed:', e);
             if (feed) {
@@ -440,6 +450,7 @@ function initNoticeBoard() {
 
     function renderFeed(notices) {
         if (!feed) return;
+        currentNotices = notices;
         if (feedLoading) feedLoading.classList.add('hidden');
         feed.classList.remove('hidden');
 

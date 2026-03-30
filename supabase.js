@@ -268,6 +268,59 @@ export const Announcements = {
 };
 
 // ============================================================
+// SUPABASE REALTIME — Announcements live feed
+// ============================================================
+/**
+ * Opens a Supabase Realtime WebSocket and calls `onNew(row)` whenever
+ * a new announcement is inserted. Returns an unsubscribe function.
+ * @param {function(object): void} onNew
+ * @returns {function} unsubscribe
+ */
+export function subscribeAnnouncements(onNew) {
+  const wsUrl = SUPABASE_URL.replace('https://', 'wss://') +
+    `/realtime/v1/websocket?apikey=${SUPABASE_ANON_KEY}&vsn=1.0.0`;
+
+  const ws = new WebSocket(wsUrl);
+  let heartbeat;
+
+  ws.addEventListener('open', () => {
+    // Join the postgres_changes channel for INSERT on announcements
+    ws.send(JSON.stringify({
+      topic: 'realtime:public:announcements',
+      event: 'phx_join',
+      payload: {
+        config: {
+          broadcast:       { ack: false },
+          presence:        { key: '' },
+          postgres_changes: [{ event: 'INSERT', schema: 'public', table: 'announcements' }],
+        },
+      },
+      ref: '1',
+    }));
+    // Keep-alive heartbeat every 25s
+    heartbeat = setInterval(() => {
+      ws.send(JSON.stringify({ topic: 'phoenix', event: 'heartbeat', payload: {}, ref: null }));
+    }, 25_000);
+  });
+
+  ws.addEventListener('message', (e) => {
+    try {
+      const msg = JSON.parse(e.data);
+      if (msg.event === 'postgres_changes' && msg.payload?.data?.record) {
+        onNew(msg.payload.data.record);
+      }
+    } catch (_) { /* ignore malformed frames */ }
+  });
+
+  ws.addEventListener('error', (e) => console.warn('[S.O.S] Realtime WS error:', e));
+
+  return function unsubscribe() {
+    clearInterval(heartbeat);
+    ws.close();
+  };
+}
+
+// ============================================================
 // USERS & PROFILE
 // ============================================================
 export const Users = {

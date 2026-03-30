@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/whatsapp", "destination": "/api/whatsapp" },
+    { "source": "/api/claude/(.*)", "destination": "/api/claude" }
+  ]
+}
