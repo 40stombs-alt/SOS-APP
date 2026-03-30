@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Service Operations | 2nd Opinion Systems</title>
+<script>!function(){var t=localStorage.getItem("sos_theme"),f=localStorage.getItem("sos_font")||"normal";t==="dark"&&document.documentElement.classList.add("dark");document.documentElement.setAttribute("data-font",f);try{var u=JSON.parse(localStorage.getItem("sos_user")||"null");if(!u||!u.employee_id||u.employee_id==="UNKNOWN")window.location.replace("./index.html");}catch(e){window.location.replace("./index.html");}}();</script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#d3e3ff",
+              "on-background": "#001c39",
+              "surface-variant": "#d3e3ff",
+              "tertiary-fixed": "#7ff4ff",
+              "on-primary-fixed": "#001c39",
+              "on-tertiary-container": "#009ea9",
+              "outline": "#73777f",
+              "on-surface-variant": "#43474e",
+              "on-secondary-fixed-variant": "#1a4a6e",
+              "inverse-primary": "#aac8f6",
+              "on-tertiary-fixed-variant": "#004f55",
+              "primary-fixed-dim": "#aac8f6",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#a0cbf5",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#001d32",
+              "outline-variant": "#c3c6cf",
+              "secondary": "#366287",
+              "primary-container": "#00284d",
+              "on-tertiary-fixed": "#002022",
+              "tertiary-fixed-dim": "#4bd9e5",
+              "primary": "#00132a",
+              "tertiary-container": "#002d31",
+              "on-primary-fixed-variant": "#29486e",
+              "surface-tint": "#426088",
+              "secondary-fixed": "#cee5ff",
+              "inverse-surface": "#0d3157",
+              "on-primary-container": "#7290bb",
+              "tertiary": "#001619",
+              "error": "#ba1a1a",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#dde9ff",
+              "surface": "#f8f9ff",
+              "inverse-on-surface": "#ebf1ff",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container": "#e6eeff",
+              "on-surface": "#001c39",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#2f5b80",
+              "surface-dim": "#c5dbff",
+              "background": "#f8f9ff",
+              "secondary-container": "#a8d3fe",
+              "surface-container-low": "#eff3ff",
+              "primary-fixed": "#d3e3ff",
+              "surface-bright": "#f8f9ff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .signature-pad {
+            background-image: radial-gradient(#c3c6cf 0.5px, transparent 0.5px);
+            background-size: 12px 12px;
+        }
+        .signature-stripe {
+            border-left: 4px solid #001619;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 dark:bg-[#00132a]/80 backdrop-blur-md shadow-sm dark:shadow-none flex items-center justify-between px-6 h-16">
+<div class="flex items-center gap-3"><img alt="2nd Opinion Systems Logo" class="h-8 w-auto object-contain" src="./logo.png"/></div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#d3e3ff]/50 transition-colors rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#43474e]" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary text-xs font-bold">JD</div>
+</div>
+</header>
+<main class="pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto space-y-8">
+<!-- Dashboard Header Context -->
+<section>
+<h2 class="text-3xl font-semibold tracking-tight text-primary mb-2">Service Operations</h2>
+<p class="text-on-surface-variant text-sm tracking-wide uppercase font-medium">Field Technician Workspace • Session ID: #OPS-9921</p>
+</section>
+<!-- Main Workspace Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Job Card Entry & Part Requests -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Section 1: Job Card Entry -->
+<div class="bg-surface-container-lowest rounded-xl p-6 signature-stripe">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="assignment">assignment</span>
+<h3 class="text-xl font-semibold text-primary">Job Card Entry</h3>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">Active Session</span>
+</div>
+<form id="job-card-form" class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1">Client Name</label>
+<input id="client-name-input" class="w-full bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-primary-fixed text-sm p-4" placeholder="e.g. St. Jude Medical" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1">Facility Site</label>
+<input id="facility-input" class="w-full bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-primary-fixed text-sm p-4" placeholder="East Wing - Level 4" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1">Machine Model</label>
+<input id="machine-input" class="w-full bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-primary-fixed text-sm p-4" placeholder="Ventilator AX-200" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1">Serial Number</label>
+<input id="serial-input" class="w-full bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-primary-fixed text-sm p-4" placeholder="SN-99283-B" type="text" required/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1">Fault Description</label>
+<textarea id="fault-desc-input" class="w-full bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-primary-fixed text-sm p-4" placeholder="Describe the diagnostic findings..." rows="3"></textarea>
+</div>
+<div class="space-y-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1">Work Performed</label>
+<textarea id="work-performed-input" class="w-full bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-primary-fixed text-sm p-4" placeholder="Detailed steps taken during service..." rows="3"></textarea>
+</div>
+<div class="space-y-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1">Parts Used</label>
+<div class="flex gap-2">
+<input id="parts-used-input" class="flex-grow bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-primary-fixed text-sm p-4" placeholder="Part No / Name" type="text"/>
+<button class="bg-secondary-container text-on-secondary-container px-4 rounded-xl flex items-center justify-center" type="button">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="pt-4">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1 mb-2 block">Client Authorization</label>
+<div class="w-full h-32 signature-pad rounded-xl border border-dashed border-outline-variant flex items-center justify-center relative overflow-hidden">
+<span id="signature-placeholder" class="text-outline-variant text-[10px] font-medium italic pointer-events-none">Signature Placeholder Area</span>
+<canvas id="signature-canvas" class="absolute inset-0 w-full h-full cursor-crosshair touch-none"></canvas>
+<div class="absolute bottom-2 right-4 flex gap-2 z-10">
+<button id="clear-signature" class="text-error text-xs font-bold uppercase tracking-tight bg-surface-container-lowest/80 px-2 py-1 rounded" type="button">Clear</button>
+</div>
+</div>
+</div>
+<div id="form-error-msg" class="hidden flex items-center gap-2 bg-error-container text-on-error-container text-xs font-semibold px-4 py-3 rounded-xl">
+  <span class="material-symbols-outlined text-sm">error</span>
+  <span id="form-error-text"></span>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-grow bg-gradient-to-br from-primary to-primary-container text-on-primary py-4 rounded-xl font-semibold shadow-lg active:scale-[0.98] transition-all" type="submit">Submit Job Card</button>
+<button id="btn-draft-job" class="px-6 border border-outline-variant rounded-xl text-primary font-medium hover:bg-surface-container-low transition-colors" type="button">Draft</button>
+</div>
+<div id="drafts-wrapper" class="hidden pt-2 mt-4 border-t border-outline-variant/30">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider px-1 mb-3 pt-2">Saved Drafts (Max 3)</p>
+<div id="drafts-list" class="flex flex-col gap-2"></div>
+</div>
+</form>
+</div>
+<!-- Section 2: Part Requests -->
+<div class="bg-surface-container-low rounded-xl p-6">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="shopping_cart">shopping_cart</span>
+<h3 class="text-xl font-semibold text-primary">Part Requests</h3>
+</div>
+<button id="btn-new-request" class="bg-primary text-on-primary px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-transform active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
+                            New Request
+                        </button>
+</div>
+<div id="part-requests-list" class="space-y-4">
+<!-- Request Item 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-surface-container-highest p-3 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<div>
+<p class="font-bold text-primary">HEPA Filter Assembly</p>
+<p class="text-xs text-on-surface-variant">REQ-8821 • Machine: Vent-X2</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Urgency</p>
+<p class="text-sm font-semibold text-error">CRITICAL</p>
+</div>
+<div class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold">PENDING</div>
+</div>
+</div>
+<!-- Request Item 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-surface-container-highest p-3 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<div>
+<p class="font-bold text-primary">Power Supply Unit (PSU)</p>
+<p class="text-xs text-on-surface-variant">REQ-8790 • Machine: MRI-Scan-01</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Urgency</p>
+<p class="text-sm font-semibold text-secondary">NORMAL</p>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold">APPROVED</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Unit Log Book -->
+<div class="lg:col-span-4">
+<div class="bg-surface-container-highest/50 rounded-xl p-6 sticky top-24">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary" data-icon="book">book</span>
+<h3 class="text-xl font-semibold text-primary">Unit Log Book</h3>
+</div>
+<div class="relative mb-6">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg" data-icon="search">search</span>
+<input id="unit-search-input" class="w-full bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary p-4 pl-12 text-sm shadow-sm transition-shadow focus:shadow-md" placeholder="Search Serial or Model..." type="text"/>
+</div>
+<div id="unit-log-book-list" class="space-y-6">
+<p class="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Recent Units</p>
+<!-- Unit 1 -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="text-sm font-bold text-primary">MRI SPECTRA-7</span>
+</div>
+<span class="text-[10px] font-medium text-on-surface-variant">SN: 44021-X</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border-l-2 border-secondary space-y-2">
+<div class="flex justify-between text-[11px]">
+<span class="font-bold text-on-surface-variant">Last Service</span>
+<span class="text-primary">12 Oct 2023</span>
+</div>
+<div class="flex justify-between text-[11px]">
+<span class="font-bold text-on-surface-variant">Technician</span>
+<span class="text-primary">Marcus R.</span>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-2 italic">"Calibration adjusted for high-temp environments."</p>
+</div>
+</div>
+<!-- Unit 2 -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="text-sm font-bold text-primary">DEFIB-GUARD S3</span>
+</div>
+<span class="text-[10px] font-medium text-on-surface-variant">SN: 9021-DD</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border-l-2 border-error-container space-y-2">
+<div class="flex justify-between text-[11px]">
+<span class="font-bold text-on-surface-variant">Last Service</span>
+<span class="text-primary">05 Nov 2023</span>
+</div>
+<div class="flex justify-between text-[11px]">
+<span class="font-bold text-on-surface-variant">Repair Count</span>
+<span class="text-error font-bold">4 Repairs</span>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-2">Critical component failure detected in battery circuit.</p>
+</div>
+</div>
+<button id="btn-view-registry" class="w-full text-center py-3 text-xs font-bold text-secondary uppercase tracking-widest hover:bg-surface-container-highest transition-colors rounded-xl">View Full Registry</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-[100] bg-white/90 backdrop-blur-lg shadow-[0_-4px_20px_0_rgba(0,28,57,0.06)] rounded-t-xl border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto flex justify-around items-center px-4 py-3 pb-safe h-18">
+<a class="flex flex-col items-center justify-center text-[#43474e] hover:text-[#00284D] hover:bg-surface-container-highest/50 rounded-xl px-5 py-2 active:scale-95 transition-all duration-150" href="./dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#d3e3ff] text-[#00132a] rounded-xl px-5 py-2 active:scale-95 transition-all duration-150" href="./service_operations.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider mt-1">Service</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#43474e] hover:text-[#00284D] hover:bg-surface-container-highest/50 rounded-xl px-5 py-2 active:scale-95 transition-all duration-150" href="./discussion_portal.html">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider mt-1">Discussion</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#43474e] hover:text-[#00284D] hover:bg-surface-container-highest/50 rounded-xl px-5 py-2 active:scale-95 transition-all duration-150" href="./profile.html">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider mt-1">Profile</span>
+</a>
+</div>
+</nav>
+
+
+<!-- New Part Request Modal -->
+    <div id="part-request-modal"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300 hidden">
+        <!-- Backdrop bg -->
+        <div class="absolute inset-0 bg-primary/40 backdrop-blur-sm shadow-xl" id="part-request-backdrop"></div>
+        <!-- Modal Dialog -->
+        <div id="part-request-content"
+            class="relative bg-surface rounded-2xl shadow-2xl w-full max-w-sm flex flex-col transform scale-95 transition-transform duration-300 p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-bold text-on-surface">New Part Request</h3>
+                <button id="btn-close-part-modal" type="button" class="text-on-surface-variant hover:text-error transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="space-y-2">
+                    <label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1">Part Name</label>
+                    <input id="modal-part-name" class="w-full bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-primary text-sm p-4" placeholder="e.g. Optical Sensor" type="text" />
+                </div>
+                
+                <div class="space-y-2">
+                    <label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-1">Urgency Level</label>
+                    <div class="grid grid-cols-2 gap-3" id="urgency-selector">
+                        <button type="button" data-urgency="NORMAL" class="urgency-btn border-2 border-primary bg-primary-container text-on-primary-container rounded-xl py-3 text-sm font-bold transition-all shadow-sm">NORMAL</button>
+                        <button type="button" data-urgency="CRITICAL" class="urgency-btn border-2 border-outline-variant text-on-surface-variant rounded-xl py-3 text-sm font-bold opacity-70 hover:opacity-100 transition-all">CRITICAL</button>
+                    </div>
+                </div>
+                
+                <button id="btn-submit-part-request" type="button"
+                    class="w-full bg-primary text-on-primary py-4 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-md mt-4">
+                    Submit Request
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="export-modal"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300 hidden">
+        <!-- Backdrop bg -->
+        <div id="export-backdrop" class="absolute inset-0 bg-primary/40 backdrop-blur-sm cursor-pointer"></div>
+        <!-- Modal Dialog -->
+        <div id="export-modal-content"
+            class="relative bg-surface rounded-2xl shadow-2xl w-full max-w-sm flex flex-col transform scale-95 transition-transform duration-300 p-6 text-center">
+            <div
+                class="w-16 h-16 bg-tertiary-container rounded-full flex items-center justify-center mx-auto mb-4 text-on-tertiary-container shadow-inner">
+                <span class="material-symbols-outlined text-3xl"
+                    style="font-variation-settings: 'FILL' 1;">task_alt</span>
+            </div>
+            <h3 class="text-xl font-bold text-on-surface mb-2">Job Card Submitted</h3>
+            <p class="text-sm text-on-surface-variant mb-6">The diagnostic details have been securely logged to the
+                centralized operations ledger.</p>
+            <div class="flex flex-col gap-3">
+                <button id="btn-export-pdf" type="button"
+                    class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-all shadow-md">
+                    <span class="material-symbols-outlined text-sm">picture_as_pdf</span>
+                    Export PDF
+                </button>
+                <button id="btn-export-done" type="button"
+                    class="w-full border border-outline-variant text-on-surface-variant py-3 rounded-xl font-bold active:scale-95 transition-all hover:bg-surface-container-low">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const jobForm = document.getElementById('job-card-form');
+            const serialInput = document.getElementById('serial-input');
+            const facilityInput = document.getElementById('facility-input');
+            const machineInput = document.getElementById('machine-input');
+            const clientNameInput = document.getElementById('client-name-input');
+            const faultDescInput = document.getElementById('fault-desc-input');
+            const workPerformedInput = document.getElementById('work-performed-input');
+            const partsUsedInput = document.getElementById('parts-used-input');
+            
+            const exportModal = document.getElementById('export-modal');
+            const exportModalContent = document.getElementById('export-modal-content');
+            const btnExportPdf = document.getElementById('btn-export-pdf');
+            const btnExportDone = document.getElementById('btn-export-done');
+            
+            const unitLogBookList = document.getElementById('unit-log-book-list');
+            
+            // Signature Canvas Logic
+            const canvas = document.getElementById('signature-canvas');
+            const ctx = canvas ? canvas.getContext('2d') : null;
+            const clearBtn = document.getElementById('clear-signature');
+            const placeholder = document.getElementById('signature-placeholder');
+            
+            let drawing = false;
+            
+            if (canvas && ctx) {
+                const resizeCanvas = () => {
+                    const rect = canvas.parentElement.getBoundingClientRect();
+                    canvas.width = rect.width;
+                    canvas.height = rect.height;
+                };
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+                
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                ctx.strokeStyle = '#00132a';
+                
+                const getPos = (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    return {
+                        x: clientX - rect.left,
+                        y: clientY - rect.top
+                    };
+                };
+                
+                const startDraw = (e) => {
+                    drawing = true;
+                    const pos = getPos(e);
+                    ctx.beginPath();
+                    ctx.moveTo(pos.x, pos.y);
+                    if (placeholder) placeholder.style.display = 'none';
+                    if (e.cancelable) e.preventDefault();
+                };
+                
+                const draw = (e) => {
+                    if (!drawing) return;
+                    const pos = getPos(e);
+                    ctx.lineTo(pos.x, pos.y);
+                    ctx.stroke();
+                    if (e.cancelable) e.preventDefault();
+                };
+                
+                const stopDraw = () => {
+                    drawing = false;
+                    ctx.closePath();
+                };
+                
+                canvas.addEventListener('mousedown', startDraw);
+                canvas.addEventListener('mousemove', draw);
+                canvas.addEventListener('mouseup', stopDraw);
+                canvas.addEventListener('mouseout', stopDraw);
+                
+                canvas.addEventListener('touchstart', startDraw, {passive: false});
+                canvas.addEventListener('touchmove', draw, {passive: false});
+                canvas.addEventListener('touchend', stopDraw);
+                
+                if (clearBtn) {
+                    clearBtn.addEventListener('click', () => {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        if (placeholder) placeholder.style.display = 'block';
+                    });
+                }
+            }
+
+            if (jobForm) {
+                jobForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const serialValue = serialInput ? serialInput.value.trim() : '';
+                    const finalSerial = serialValue || 'Unknown-SN';
+                    
+                    const facilityValue = facilityInput ? facilityInput.value.trim() : '';
+                    const finalFacility = facilityValue || 'Local Clinic';
+                    
+                    const clientValue = clientNameInput ? clientNameInput.value.trim() : '';
+                    const finalClient = clientValue || finalFacility;
+                    
+                    const faultValue = faultDescInput ? faultDescInput.value.trim() : '';
+                    const workValue = workPerformedInput ? workPerformedInput.value.trim() : '';
+                    const partsValue = partsUsedInput ? partsUsedInput.value.trim() : '';
+                    
+                    // Create consolidated description for table matching
+                    const faultServiceSummary = faultValue.substring(0, 30) + (faultValue.length > 30 ? '...' : '') + ' / ' + workValue.substring(0, 30) + (workValue.length > 30 ? '...' : '');
+
+                    const machineValue = machineInput ? machineInput.value.trim() : '';
+                    const finalMachine = machineValue ? `${machineValue} (SN: ${finalSerial})` : `SN: ${finalSerial}`;
+                    const rawMachine = machineValue || 'Unknown Machine';
+
+                    // Format time matching table (e.g. Oct 24, 14:20)
+                    const now = new Date();
+                    const dateStr = now.toLocaleDateString('en-GB', { month: 'short', day: 'numeric' }) + ', ' +
+                        now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+                    const newJob = {
+                        facility: finalClient,
+                        machine: finalMachine,
+                        faultService: faultServiceSummary,
+                        parts: partsValue,
+                        status: 'SOLVED',
+                        date: dateStr
+                    };
+
+                    const existingJobs = JSON.parse(localStorage.getItem('completedJobs') || '[]');
+                    existingJobs.unshift(newJob);
+                    localStorage.setItem('completedJobs', JSON.stringify(existingJobs));
+
+                    // ── Supabase: persist job card ──
+                    (async () => {
+                      try {
+                        const { sbSaveJobCard, sbWriteLog } = window._sos_db || {};
+                        if (sbSaveJobCard) {
+                          await sbSaveJobCard({
+                            facility: newJob.facility, machine: newJob.machine,
+                            serial: finalSerial, faultDescription: newJob.faultService,
+                            workPerformed: workPerformedValue, partsUsed: newJob.parts,
+                            status: 'completed',
+                          });
+                          if (sbWriteLog) await sbWriteLog(`Job card submitted: ${newJob.facility}`, 'job_card', newJob.machine);
+                        }
+                      } catch(e) { console.warn('[SOS DB] job_card save failed:', e.message); }
+                    })();
+                    
+                    // Prepend to Unit Log book dynamically
+                    if (unitLogBookList) {
+                        const pTag = unitLogBookList.querySelector('p');
+                        const newUnit = document.createElement('div');
+                        newUnit.className = 'space-y-3 animate-[fade-in_0.5s_ease-out]';
+                        newUnit.innerHTML = `
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                    <span class="text-sm font-bold text-primary">${rawMachine.toUpperCase()}</span>
+                                </div>
+                                <span class="text-[10px] font-medium text-on-surface-variant">SN: ${finalSerial}</span>
+                            </div>
+                            <div class="bg-surface-container-lowest p-4 rounded-xl border-l-2 border-primary space-y-2">
+                                <div class="flex justify-between text-[11px]">
+                                    <span class="font-bold text-on-surface-variant">Last Service</span>
+                                    <span class="text-primary">${dateStr}</span>
+                                </div>
+                                <div class="flex justify-between text-[11px]">
+                                    <span class="font-bold text-on-surface-variant">Technician</span>
+                                    <span class="text-primary">Marcus R.</span>
+                                </div>
+                                <p class="text-[11px] text-on-surface-variant mt-2 italic">Scheduled maintenance logged at ${finalFacility}.</p>
+                            </div>
+                        `;
+                        if (pTag) {
+                            pTag.after(newUnit);
+                        } else {
+                            unitLogBookList.prepend(newUnit);
+                        }
+                    }
+
+                    // Capture signature before showing modal
+                    if (canvas) {
+                        const sigData = canvas.toDataURL('image/png');
+                        sessionStorage.setItem('sos_last_signature', sigData);
+                    }
+
+                    exportModal.classList.remove('hidden');
+                    setTimeout(() => {
+                        exportModal.classList.remove('opacity-0', 'pointer-events-none');
+                        exportModalContent.classList.remove('scale-95');
+                        exportModalContent.classList.add('scale-100');
+                    }, 10);
+                });
+            }
+
+            const closeExportModal = () => {
+                exportModal.classList.add('opacity-0', 'pointer-events-none');
+                exportModalContent.classList.remove('scale-100');
+                exportModalContent.classList.add('scale-95');
+                setTimeout(() => exportModal.classList.add('hidden'), 300);
+            };
+
+            // PDF export is handled by main.js (initExportModal) which includes signature data.
+            // The inline handler is intentionally removed to avoid duplicate listeners.
+
+            // View Full Registry Logic
+            const btnViewRegistry = document.getElementById('btn-view-registry');
+            if (btnViewRegistry && unitLogBookList) {
+                btnViewRegistry.addEventListener('click', () => {
+                    btnViewRegistry.style.display = 'none';
+                    const savedJobs = JSON.parse(localStorage.getItem('completedJobs') || '[]');
+                    const existingSerials = Array.from(unitLogBookList.querySelectorAll('.flex.items-center.justify-between span:last-child')).map(span => span.textContent);
+
+                    savedJobs.reverse().forEach(job => {
+                        const serialMatch = job.machine.match(/SN:\s*([A-Za-z0-9\-]+)/);
+                        const listSerial = serialMatch ? `SN: ${serialMatch[1]}` : job.machine;
+                        
+                        // Prevent duplicates and only inject new ones
+                        if (!existingSerials.includes(listSerial)) {
+                             const newUnit = document.createElement('div');
+                             newUnit.className = 'space-y-3 animate-[fade-in_0.5s_ease-out]';
+                             newUnit.innerHTML = `
+                                 <div class="flex items-center justify-between">
+                                     <div class="flex items-center gap-2">
+                                         <span class="w-2 h-2 rounded-full bg-primary"></span>
+                                         <span class="text-sm font-bold text-primary">${job.machine.split('(')[0].trim().toUpperCase()}</span>
+                                     </div>
+                                     <span class="text-[10px] font-medium text-on-surface-variant">${listSerial}</span>
+                                 </div>
+                                 <div class="bg-surface-container-lowest p-4 rounded-xl border-l-2 border-outline-variant space-y-2">
+                                     <div class="flex justify-between text-[11px]">
+                                         <span class="font-bold text-on-surface-variant">Last Service</span>
+                                         <span class="text-primary">${job.date}</span>
+                                     </div>
+                                     <div class="flex justify-between text-[11px]">
+                                         <span class="font-bold text-on-surface-variant">Facility</span>
+                                         <span class="text-primary">${job.facility}</span>
+                                     </div>
+                                     <p class="text-[11px] text-on-surface-variant mt-2 italic">"${job.faultService || 'Routine protocol complete.'}"</p>
+                                 </div>
+                             `;
+                             unitLogBookList.insertBefore(newUnit, btnViewRegistry);
+                             existingSerials.push(listSerial); // Append to loop checking tracking string array
+                        }
+                    });
+                });
+            }
+
+            // Unit Search Filter Logic
+            const unitSearchInput = document.getElementById('unit-search-input');
+            if (unitSearchInput && unitLogBookList) {
+                unitSearchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase();
+                    const unitCards = unitLogBookList.querySelectorAll('.space-y-3');
+                    unitCards.forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // Part Requests Interactions (Tap / Long-Tap & New Request)
+            const attachCardInteractions = (card) => {
+                let pressTimer;
+                let isLongPress = false;
+                
+                const startPress = (e) => {
+                    isLongPress = false;
+                    pressTimer = setTimeout(() => {
+                        isLongPress = true;
+                        // Long Press: Set to PENDING
+                        const statusNode = card.querySelector('.part-status');
+                        if (statusNode) {
+                            statusNode.textContent = 'PENDING';
+                            statusNode.className = 'bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold part-status transition-colors duration-300';
+                        }
+                        card.classList.add('ring-2', 'ring-tertiary', 'transition-shadow');
+                        setTimeout(() => card.classList.remove('ring-2', 'ring-tertiary'), 300);
+                        if (navigator.vibrate) navigator.vibrate(50);
+                    }, 600);
+                };
+
+                const cancelPress = () => clearTimeout(pressTimer);
+                
+                const handleTap = (e) => {
+                    if (isLongPress) {
+                        if (e.cancelable) e.preventDefault();
+                        return;
+                    }
+                    // Tap: Set to RECEIVED
+                    const statusNode = card.querySelector('.part-status');
+                    if (statusNode) {
+                        statusNode.textContent = 'RECEIVED';
+                        statusNode.className = 'bg-secondary text-on-secondary px-3 py-1 rounded-full text-[10px] font-bold part-status transition-colors duration-300';
+                    }
+                };
+
+                card.addEventListener('mousedown', startPress);
+                card.addEventListener('touchstart', startPress, {passive: true});
+                card.addEventListener('mouseup', cancelPress);
+                card.addEventListener('mouseleave', cancelPress);
+                card.addEventListener('touchend', cancelPress);
+                card.addEventListener('touchcancel', cancelPress);
+                card.addEventListener('click', handleTap);
+            };
+
+            const partRequestsList = document.getElementById('part-requests-list');
+            const btnNewRequest = document.getElementById('btn-new-request');
+            
+            if (partRequestsList) {
+            }
+        });
+    </script>
+    
+    <!-- Scripts -->
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

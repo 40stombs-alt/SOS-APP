@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" fill="none">
+  <!--
+    Second Opinion Systems — Logo
+    Three interlocking SOS arc shapes in steel blue + green centre dot
+  -->
+
+  <!-- Shape 1: large C-arc, gap at bottom-right -->
+  <path d="
+    M 250 82
+    A 128 128 0 1 1 375 208
+    L 345 208
+    A 98 98 0 1 0 250 112
+    Z
+  " fill="#78b3cc"/>
+
+  <!-- Shape 2: same shape rotated 120° around logo centre -->
+  <g transform="rotate(120 250 210)">
+    <path d="
+      M 250 82
+      A 128 128 0 1 1 375 208
+      L 345 208
+      A 98 98 0 1 0 250 112
+      Z
+    " fill="#78b3cc"/>
+  </g>
+
+  <!-- Shape 3: same shape rotated 240° around logo centre -->
+  <g transform="rotate(240 250 210)">
+    <path d="
+      M 250 82
+      A 128 128 0 1 1 375 208
+      L 345 208
+      A 98 98 0 1 0 250 112
+      Z
+    " fill="#78b3cc"/>
+  </g>
+
+  <!-- White ring -->
+  <circle cx="250" cy="210" r="50" fill="white"/>
+  <!-- Green centre dot -->
+  <circle cx="250" cy="210" r="37" fill="#3db54a"/>
+
+  <!-- Logotype -->
+  <text x="250" y="384"
+    text-anchor="middle"
+    font-family="'Arial Black','Arial',sans-serif"
+    font-weight="900"
+    font-size="33"
+    letter-spacing="3.5"
+    fill="#1a3a5c">SECOND OPINION SYSTEMS</text>
+</svg>

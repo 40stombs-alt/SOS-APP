@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | 2nd Opinion Systems</title>
+<script>!function(){var t=localStorage.getItem("sos_theme"),f=localStorage.getItem("sos_font")||"normal";t==="dark"&&document.documentElement.classList.add("dark");document.documentElement.setAttribute("data-font",f)}();</script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#d3e3ff",
+              "on-background": "#001c39",
+              "surface-variant": "#d3e3ff",
+              "tertiary-fixed": "#7ff4ff",
+              "on-primary-fixed": "#001c39",
+              "on-tertiary-container": "#009ea9",
+              "outline": "#73777f",
+              "on-surface-variant": "#43474e",
+              "on-secondary-fixed-variant": "#1a4a6e",
+              "inverse-primary": "#aac8f6",
+              "on-tertiary-fixed-variant": "#004f55",
+              "primary-fixed-dim": "#aac8f6",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#a0cbf5",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#001d32",
+              "outline-variant": "#c3c6cf",
+              "secondary": "#366287",
+              "primary-container": "#00284d",
+              "on-tertiary-fixed": "#002022",
+              "tertiary-fixed-dim": "#4bd9e5",
+              "primary": "#00132a",
+              "tertiary-container": "#002d31",
+              "on-primary-fixed-variant": "#29486e",
+              "surface-tint": "#426088",
+              "secondary-fixed": "#cee5ff",
+              "inverse-surface": "#0d3157",
+              "on-primary-container": "#7290bb",
+              "tertiary": "#001619",
+              "error": "#ba1a1a",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#dde9ff",
+              "surface": "#f8f9ff",
+              "inverse-on-surface": "#ebf1ff",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container": "#e6eeff",
+              "on-surface": "#001c39",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#2f5b80",
+              "surface-dim": "#c5dbff",
+              "background": "#f8f9ff",
+              "secondary-container": "#a8d3fe",
+              "surface-container-low": "#eff3ff",
+              "primary-fixed": "#d3e3ff",
+              "surface-bright": "#f8f9ff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #00132a 0%, #00284d 100%);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<main class="flex-grow flex items-center justify-center p-6 lg:p-12">
+<div class="w-full max-w-[1200px] grid grid-cols-1 lg:grid-cols-2 bg-surface-container-low rounded-xl overflow-hidden shadow-2xl shadow-on-surface/5">
+<div class="hidden lg:flex flex-col justify-between p-12 signature-gradient relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-0 left-0 w-full h-full" data-alt="Abstract technical grid pattern representing medical precision" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-12">
+<img alt="2nd Opinion Systems Logo" class="h-20 w-auto drop-shadow-lg" src="./logo.png" style="filter: brightness(1.15) saturate(1.1);"/>
+</div>
+<h1 class="text-5xl font-extrabold text-on-primary tracking-tight leading-tight mb-6">
+                        Precision diagnostics <br/>
+<span class="text-tertiary-fixed-dim">for the field.</span>
+</h1>
+<p class="text-on-primary-container text-lg max-w-md leading-relaxed">
+                        Access the clinical architect portal to manage field diagnostics, service logs, and technician coordination with medical-grade accuracy.
+                    </p>
+</div>
+<div class="relative z-10 mt-auto">
+<div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">verified_user</span>
+</div>
+<div>
+<p class="text-sm font-medium text-on-primary">Enterprise Security</p>
+<p class="text-xs text-on-primary-container">End-to-end encrypted session active</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-center p-8 md:p-16 lg:p-20 bg-surface-container-lowest">
+<div class="mb-10">
+<div class="flex flex-col items-start gap-8">
+<img alt="2nd Opinion Systems" class="w-48 md:w-64 h-auto object-contain" src="./logo.png"/>
+<div class="space-y-2">
+<h2 class="text-3xl font-bold text-on-surface tracking-tight">Technician Service Portal</h2>
+<p class="text-on-surface-variant">Please authenticate to access your diagnostic toolkit.</p>
+</div>
+</div>
+</div>
+<form class="space-y-6" id="login-form">
+
+<div class="space-y-2">
+<label class="block text-[11px] font-medium uppercase tracking-wider text-on-surface-variant ml-1" for="email">
+                            Email or Username
+                        </label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">person</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-surface-container-highest border-none rounded-xl text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary-fixed-dim transition-all outline-none" id="email" name="email" placeholder="name@2ndopinion.com" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="block text-[11px] font-medium uppercase tracking-wider text-on-surface-variant" for="password">
+                                Password
+                            </label>
+<a class="text-[11px] font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors" href="#">
+                                Forgot Password?
+                            </a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">lock</span>
+</div>
+<input class="block w-full pl-12 pr-12 py-4 bg-surface-container-highest border-none rounded-xl text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary-fixed-dim transition-all outline-none" id="password" name="password" placeholder="••••••••••••" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-4 flex items-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center px-1">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary-fixed-dim transition-all cursor-pointer" id="remember" name="remember" type="checkbox"/>
+<label class="ml-3 text-sm font-medium text-on-surface-variant cursor-pointer select-none" for="remember">
+                            Remember my credentials
+                        </label>
+</div>
+<button class="w-full signature-gradient text-on-primary py-4 rounded-xl font-bold tracking-tight text-lg shadow-xl shadow-primary/20 hover:shadow-primary/40 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+                        Login to Portal
+                        <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<div class="mt-12 flex flex-col items-center gap-6">
+<div class="w-full flex items-center gap-4">
+<div class="flex-grow h-px bg-outline-variant/30"></div>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-outline">Clinical Support</span>
+<div class="flex-grow h-px bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-2 gap-4 w-full">
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-surface-container-low border border-outline-variant/10 text-on-surface-variant hover:bg-surface-variant transition-colors text-sm font-semibold">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+                            Help Desk
+                        </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-surface-container-low border border-outline-variant/10 text-on-surface-variant hover:bg-surface-variant transition-colors text-sm font-semibold">
+<span class="material-symbols-outlined text-lg">description</span>
+                            Manuals
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="p-8 text-center text-on-surface-variant/60 text-xs">
+        © 2024 2nd Opinion Systems. Restricted Access Software. Unauthorized entry will be logged.
+    </footer>
+<!-- ── Forgot Password Modal ── -->
+<div id="forgot-modal" class="hidden fixed inset-0 z-[300] flex items-center justify-center p-6 bg-on-surface/40 backdrop-blur-sm">
+  <div class="w-full max-w-sm bg-surface-container-lowest rounded-2xl shadow-2xl p-8 space-y-5">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-secondary text-2xl">lock_reset</span>
+      <h3 class="text-lg font-bold text-on-surface">Reset Password</h3>
+    </div>
+    <p class="text-sm text-on-surface-variant leading-relaxed">Enter your username. A reset request will be sent to your administrator who can unlock your account.</p>
+    <input type="text" id="forgot-username" placeholder="Your username (e.g. mojalefa)"
+      class="w-full bg-surface-container-highest border-none rounded-xl text-sm p-4 focus:ring-2 focus:ring-primary-fixed-dim outline-none"/>
+    <div id="forgot-status" class="hidden text-sm font-medium rounded-xl px-4 py-3"></div>
+    <div class="flex gap-3 pt-1">
+      <button id="btn-forgot-cancel" class="flex-1 py-3 rounded-xl border border-outline-variant text-sm font-medium text-on-surface-variant hover:bg-surface-container transition-colors">Cancel</button>
+      <button id="btn-forgot-submit" class="flex-1 py-3 rounded-xl bg-secondary text-white text-sm font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-base">send</span>Request Reset
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Supabase-based login authentication -->
+<script>
+  const SUPABASE_URL = 'https://ktkczqvxoifzosmkaoco.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0a2N6cXZ4b2lmem9zbWthb2NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxODcyNDgsImV4cCI6MjA4OTc2MzI0OH0.m5B30L1SiOhlnifRNaKvLP_JEaqy65zGLBM_Nft2bl8';
+
+  // Password visibility toggle
+  document.querySelector('button[type="button"]').addEventListener('click', function () {
+    const pwInput = document.getElementById('password');
+    const icon = this.querySelector('span');
+    if (pwInput.type === 'password') {
+      pwInput.type = 'text';
+      icon.textContent = 'visibility_off';
+    } else {
+      pwInput.type = 'password';
+      icon.textContent = 'visibility';
+    }
+  });
+
+  // ── Forgot Password ──
+  document.querySelector('a[href="#"]')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('forgot-modal').classList.remove('hidden');
+    document.getElementById('forgot-username').focus();
+  });
+  document.getElementById('btn-forgot-cancel')?.addEventListener('click', () => {
+    document.getElementById('forgot-modal').classList.add('hidden');
+    document.getElementById('forgot-status').classList.add('hidden');
+    document.getElementById('forgot-username').value = '';
+  });
+  document.getElementById('btn-forgot-submit')?.addEventListener('click', async () => {
+    const username = document.getElementById('forgot-username').value.trim();
+    const statusEl = document.getElementById('forgot-status');
+    const submitBtn = document.getElementById('btn-forgot-submit');
+    if (!username) { document.getElementById('forgot-username').focus(); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="material-symbols-outlined text-base animate-spin">progress_activity</span>';
+
+    try {
+      const res  = await fetch(`${SUPABASE_URL}/rest/v1/users?username=eq.${encodeURIComponent(username)}&select=employee_id,full_name`,
+        { headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` } });
+      const rows = await res.json();
+
+      if (rows.length) {
+        await fetch(`${SUPABASE_URL}/rest/v1/logs`, {
+          method: 'POST',
+          headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}`,
+                     'Content-Type': 'application/json', Prefer: 'return=minimal' },
+          body: JSON.stringify({
+            user_id:   rows[0].employee_id,
+            user_name: rows[0].full_name,
+            action:    'Password reset requested',
+            category:  'security',
+            detail:    `Username: ${username}`,
+            severity:  'warning',
+          }),
+        });
+        statusEl.className = 'text-sm font-medium bg-tertiary-fixed-dim text-on-tertiary-fixed-variant rounded-xl px-4 py-3';
+        statusEl.textContent = '✓ Reset request logged. Your administrator can now see this and will reset your password.';
+      } else {
+        statusEl.className = 'text-sm font-medium bg-error-container text-on-error-container rounded-xl px-4 py-3';
+        statusEl.textContent = 'Username not found. Please check the spelling and try again.';
+      }
+    } catch {
+      statusEl.className = 'text-sm font-medium bg-error-container text-on-error-container rounded-xl px-4 py-3';
+      statusEl.textContent = 'Connection error. Please try again.';
+    }
+    statusEl.classList.remove('hidden');
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span class="material-symbols-outlined text-base">send</span>Request Reset';
+  });
+
+  const form    = document.getElementById('login-form');
+  const btnLogin = form.querySelector('button[type="submit"]');
+  let errorBanner = null;
+
+  function showError(msg) {
+    if (!errorBanner) {
+      errorBanner = document.createElement('div');
+      errorBanner.className = 'w-full bg-error/10 border border-error/30 text-error text-sm font-semibold rounded-xl px-4 py-3 flex items-center gap-2';
+      errorBanner.innerHTML = '<span class="material-symbols-outlined text-base">error</span><span id="error-text"></span>';
+      form.prepend(errorBanner);
+    }
+    errorBanner.querySelector('#error-text').textContent = msg;
+    errorBanner.style.display = 'flex';
+    // Shake animation
+    form.animate([
+      { transform: 'translateX(0)' },
+      { transform: 'translateX(-8px)' },
+      { transform: 'translateX(8px)' },
+      { transform: 'translateX(-6px)' },
+      { transform: 'translateX(6px)' },
+      { transform: 'translateX(0)' },
+    ], { duration: 400, easing: 'ease-out' });
+  }
+
+  // ── Password hashing (SHA-256) ──
+  async function hashPassword(plain) {
+    const encoded = new TextEncoder().encode('sos_v1_' + plain);
+    const buffer  = await crypto.subtle.digest('SHA-256', encoded);
+    return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  function isHashed(s) { return typeof s === 'string' && s.length === 64 && /^[0-9a-f]+$/.test(s); }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (errorBanner) errorBanner.style.display = 'none';
+
+    const raw      = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    if (!raw || !password) { showError('Please enter your username and password.'); return; }
+
+    // Accept either username or email
+    const isEmail   = raw.includes('@');
+    const filterKey = isEmail ? 'email' : 'username';
+
+    btnLogin.disabled = true;
+    btnLogin.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">progress_activity</span> Authenticating…';
+
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/users?${filterKey}=eq.${encodeURIComponent(raw)}&select=*`,
+        { headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` } }
+      );
+      const rows = await res.json();
+
+      if (!rows.length) { showError('Account not found. Check your username.'); return; }
+      const user = rows[0];
+      if (!user.is_active) { showError('This account has been deactivated. Contact an admin.'); return; }
+
+      // ── Secure password check with auto-migration ──
+      let passwordOk = false;
+      if (isHashed(user.password)) {
+        // Already hashed: compare hash of input
+        const inputHash = await hashPassword(password);
+        passwordOk = inputHash === user.password;
+      } else {
+        // Legacy plaintext: compare directly, then silently upgrade to hash
+        passwordOk = user.password === password;
+        if (passwordOk) {
+          const newHash = await hashPassword(password);
+          fetch(`${SUPABASE_URL}/rest/v1/users?id=eq.${user.id}`, {
+            method: 'PATCH',
+            headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}`,
+                       'Content-Type': 'application/json', Prefer: 'return=minimal' },
+            body: JSON.stringify({ password: newHash }),
+          }).catch(() => {});
+        }
+      }
+      if (!passwordOk) { showError('Incorrect password. Please try again.'); return; }
+
+      // Update last_login
+      fetch(`${SUPABASE_URL}/rest/v1/users?id=eq.${user.id}`, {
+        method: 'PATCH',
+        headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}`,
+                   'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({ last_login: new Date().toISOString() }),
+      });
+
+      // Audit log — record successful login
+      fetch(`${SUPABASE_URL}/rest/v1/logs`, {
+        method: 'POST',
+        headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}`,
+                   'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({
+          user_id:   user.employee_id,
+          user_name: user.full_name,
+          action:    'User logged in',
+          category:  'auth',
+          detail:    `Role: ${user.role} · Device: ${navigator.userAgent.split(')')[0].split('(')[1] || 'Unknown'}`,
+          severity:  'info',
+        }),
+      }).catch(() => {});
+
+      // Persist session
+      localStorage.setItem('sos_user', JSON.stringify({
+        id:           user.id,
+        username:     user.username,
+        full_name:    user.full_name,
+        role:         user.role,
+        title:        user.title,
+        employee_id:  user.employee_id,
+        email:        user.email,
+      }));
+      localStorage.setItem('sos_is_admin', user.role === 'admin' ? 'true' : 'false');
+
+      // Show success flash
+      btnLogin.innerHTML = '✔ Logged in! Redirecting…';
+      btnLogin.className = btnLogin.className.replace('signature-gradient', 'bg-secondary');
+
+      setTimeout(() => {
+        window.location.href = './dashboard.html';
+      }, 650);
+
+    } catch (err) {
+      showError('Connection error. Please try again.');
+      console.error(err);
+    } finally {
+      if (btnLogin.disabled) {
+        btnLogin.disabled = false;
+        if (!btnLogin.innerHTML.includes('Logged')) {
+          btnLogin.innerHTML = 'Login to Portal <span class="material-symbols-outlined text-xl">arrow_forward</span>';
+        }
+      }
+    }
+  });
+</script>
+</body></html>

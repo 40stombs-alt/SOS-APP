@@ -1,0 +1,466 @@
+/* 
+  The Clinical Architect Design System
+  Medical, Technical, Precision Aesthetics
+*/
+
+:root {
+  /* Colors - Tonal Authority */
+  --surface: #f8f9ff;
+  --surface-container-low: #eff3ff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-highest: #d3e3ff;
+  --surface-bright: #f8f9ff;
+
+  --primary: #00132a;
+  --primary-container: #00284d;
+  --primary-fixed: #d3e3ff;
+  --inverse-primary: #aac8f6;
+
+  --on-surface: #001c39;
+  --on-surface-variant: #43474e;
+  
+  --secondary: #366287;
+  --outline-variant: #c3c6cf;
+  
+  --tertiary: #001619;
+  --tertiary-container: #002d31;
+  --on-tertiary-container: #009ea9;
+  --tertiary-fixed-dim: #4bd9e5;
+  --on-tertiary-fixed-variant: #004f55;
+
+  /* Typography Scales */
+  --font-family: 'Inter', sans-serif;
+  
+  /* Spacing */
+  --spacing-6: 1.5rem;
+  --spacing-10: 2.5rem;
+  
+  /* Radii */
+  --radius-default: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+}
+
+/* Base Reset & Typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--surface);
+  color: var(--on-surface);
+  min-height: 100vh;
+  /* 1. Overview: No standard template clutter. Clean layer logic. */
+  overflow-x: hidden;
+}
+
+/* Typography Editorial Scale */
+.display-sm {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -0.02em; /* Tight-tracked */
+  line-height: 1.1;
+}
+
+.headline-lg {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.headline-md {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-6);
+}
+
+.body-md {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--on-surface);
+}
+
+.body-sm {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--on-surface-variant);
+}
+
+.label-md {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* +5% tracking */
+  color: var(--on-surface-variant);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.label-sm {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--on-surface-variant);
+}
+
+/* Layout Architecture */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Diagnostic Rail (Left Nav) */
+.diagnostic-rail {
+  width: 64px;
+  background-color: var(--primary-container);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--spacing-6);
+  z-index: 100;
+}
+
+.rail-logo {
+  color: var(--inverse-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-10);
+}
+
+.rail-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  width: 100%;
+}
+
+.rail-item {
+  width: 100%;
+  height: var(--spacing-10);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(170, 200, 246, 0.5); /* Faded inverse-primary */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.rail-item:hover, .rail-item:focus {
+  color: var(--inverse-primary);
+  background: rgba(170, 200, 246, 0.1);
+  outline: none;
+}
+
+.rail-item.active {
+  color: var(--inverse-primary);
+  border-left: 3px solid var(--inverse-primary);
+}
+
+/* Main Content Area */
+.content-area {
+  flex: 1;
+  padding: 6rem 3rem 3rem; /* Leave room for glass header */
+  background-color: var(--surface-container-low); /* Tonal lift base layer */
+  position: relative;
+}
+
+/* Glassmorphism Header */
+.glass-header {
+  position: fixed;
+  top: 0;
+  left: 64px; /* offset for rail */
+  right: 0;
+  padding: 1rem 3rem;
+  background: rgba(248, 249, 255, 0.8); /* surface color at 80% */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
+  /* NO btm border! */
+}
+
+/* Status Badges */
+.status-badge {
+  background-color: var(--tertiary-container);
+  color: var(--on-tertiary-container);
+  padding: 0.375rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-badge::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--on-tertiary-container);
+  box-shadow: 0 0 8px var(--tertiary-fixed-dim);
+}
+
+/* Metrics Grid & Cards */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+  margin-bottom: 3rem;
+}
+
+/* Field Tech Card (surface-container-lowest, xl corner, left accent) */
+.metric-card {
+  background-color: var(--surface-container-lowest);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* Tonal layering: NO BORDERS */
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--tertiary); /* Accent Stripe */
+}
+
+.ambient-shadow {
+  box-shadow: 0 24px 40px rgba(0, 28, 57, 0.06); /* Ambient shadow */
+  z-index: 10;
+}
+
+.unit {
+  font-size: 1rem;
+  color: var(--on-surface-variant);
+  font-weight: 400;
+}
+
+/* Ghost Boundary / Section Lists */
+.log-section {
+  margin-bottom: 3rem;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6); /* Separation solely via whitespace */
+}
+
+.ghost-container {
+  border: 1px solid rgba(195, 198, 207, 0.15); /* 15% opacity ghost border */
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  background-color: var(--surface);
+}
+
+.note-item p {
+  margin: 0.75rem 0;
+}
+
+.action-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 0.875rem; /* label-md */
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  min-height: var(--spacing-10); /* Touch targets = 2.5rem */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  border: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+/* Gradient Primary Button */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+  color: white;
+  box-shadow: 0 8px 16px rgba(0, 20, 42, 0.15); /* Adds technical sheen */
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--secondary);
+  border: 1px solid rgba(195, 198, 207, 0.15); /* Ghost Border */
+}
+
+.btn-tertiary {
+  background-color: var(--tertiary-fixed-dim);
+  color: var(--on-tertiary-fixed-variant);
+}
+
+/* Form Fields */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 500px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.technical-input {
+  background-color: var(--surface-container-highest);
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--on-surface);
+  min-height: var(--spacing-10);
+  transition: all 0.2s ease;
+}
+
+.technical-input::placeholder {
+  color: var(--on-surface-variant);
+  opacity: 0.7;
+}
+
+.technical-input:focus {
+  outline: none;
+  background-color: var(--surface-container-lowest);
+  box-shadow: 0 0 0 2px var(--primary-fixed); /* Outer glow instead of hard border */
+}
+
+/* ============================================================
+   FONT SIZE SCALING  (set via html[data-font])
+   ============================================================ */
+html[data-font="small"]  { font-size: 13px; }
+html[data-font="normal"] { font-size: 16px; }
+html[data-font="large"]  { font-size: 19px; }
+
+/* ============================================================
+   DARK MODE OVERRIDES
+   Using html.dark prefix for higher specificity than Tailwind.
+   All colours reference the Material Design 3 dark palette.
+   ============================================================ */
+
+/* ── Surface layers ── */
+html.dark body,
+html.dark .bg-surface,
+html.dark .bg-background        { background-color: #12141a !important; color: #dde3f0 !important; }
+
+html.dark .bg-surface-container-lowest,
+html.dark .bg-white             { background-color: #0d1018 !important; }
+
+html.dark .bg-surface-container-low { background-color: #191c23 !important; }
+html.dark .bg-surface-container     { background-color: #1e222a !important; }
+html.dark .bg-surface-container-high{ background-color: #252930 !important; }
+html.dark .bg-surface-container-highest { background-color: #2d3139 !important; }
+html.dark .bg-surface-bright    { background-color: #12141a !important; }
+html.dark .bg-surface-dim       { background-color: #0a0c10 !important; }
+
+/* ── Text ── */
+html.dark .text-on-surface          { color: #dde3f0 !important; }
+html.dark .text-on-surface-variant  { color: #bdc1cc !important; }
+html.dark .text-on-background       { color: #dde3f0 !important; }
+html.dark .text-outline             { color: #8d9099 !important; }
+html.dark .text-primary             { color: #aac8f6 !important; }
+html.dark .text-secondary           { color: #8fc4e8 !important; }
+
+/* ── Borders ── */
+html.dark .border-outline-variant\/10,
+html.dark .border-outline-variant\/20,
+html.dark .border-outline-variant\/30,
+html.dark .border-outline-variant   { border-color: #43474f !important; }
+
+/* ── Navigation bars ── */
+html.dark nav,
+html.dark nav.fixed                 { background: rgba(13, 16, 24, 0.95) !important;
+                                      border-top-color: #2a2e38 !important; }
+
+/* ── Sticky / glass headers ── */
+html.dark header,
+html.dark .glass-header             { background: rgba(13, 16, 24, 0.92) !important;
+                                      border-bottom-color: #2a2e38 !important; }
+
+/* ── Card left-border accents — keep them ── */
+
+/* ── Inputs, textareas, selects ── */
+html.dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+html.dark textarea,
+html.dark select                    { background-color: #1e222a !important;
+                                      color: #dde3f0 !important;
+                                      border-color: #43474f !important; }
+
+html.dark input::placeholder,
+html.dark textarea::placeholder     { color: #6b7280 !important; }
+
+/* ── Secondary container / primary-fixed chips ── */
+html.dark .bg-secondary-container   { background-color: #1a3a5c !important; }
+html.dark .bg-secondary-container\/40,
+html.dark .bg-secondary-container\/50,
+html.dark .bg-secondary-container\/60 { background-color: rgba(26,58,92,0.5) !important; }
+html.dark .bg-primary-container     { background-color: #1d2e45 !important; }
+html.dark .bg-primary-fixed         { background-color: #1a3a5c !important; }
+html.dark .bg-surface-container-highest.text-primary { color: #aac8f6 !important; }
+
+/* ── Error states ── */
+html.dark .bg-error-container       { background-color: #410002 !important; }
+html.dark .text-on-error-container  { color: #ffb4ab !important; }
+
+/* ── Tertiary / teal accent stays bright ── */
+/* (tertiary-fixed-dim #4bd9e5 is fine on dark) */
+
+/* ── Dividers ── */
+html.dark .h-px.bg-surface-container { background-color: #2a2e38 !important; }
+
+/* ── AI chat panel ── */
+html.dark #ai-chat-panel            { background: rgba(13, 16, 24, 0.97) !important; }
+html.dark .bg-surface-container.text-on-surface { background-color: #1e222a !important; }
+
+/* ── Modals ── */
+html.dark [id$="-modal"] .bg-surface-container-lowest,
+html.dark [id$="-content"] { background-color: #0d1018 !important; }
+
+/* ── Skeleton loaders ── */
+html.dark .animate-pulse.bg-surface-container-low { background-color: #1e222a !important; }
+
+/* ── Shadow tweaks for dark ── */
+html.dark .shadow-2xl    { box-shadow: 0 25px 50px rgba(0,0,0,0.6) !important; }
+html.dark .shadow-xl     { box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important; }
+html.dark .shadow-sm     { box-shadow: 0 2px 8px rgba(0,0,0,0.4) !important; }
+
+/* ── Sign-in / landing page panel override ── */
+html.dark .bg-surface-container-lowest { background-color: #0d1018 !important; }

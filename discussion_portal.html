@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Technician Discussion Portal | 2nd Opinion Systems</title>
+<script>!function(){var t=localStorage.getItem("sos_theme"),f=localStorage.getItem("sos_font")||"normal";t==="dark"&&document.documentElement.classList.add("dark");document.documentElement.setAttribute("data-font",f);try{var u=JSON.parse(localStorage.getItem("sos_user")||"null");if(!u||!u.employee_id||u.employee_id==="UNKNOWN")window.location.replace("./index.html");}catch(e){window.location.replace("./index.html");}}();</script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#d3e3ff",
+              "on-background": "#001c39",
+              "surface-variant": "#d3e3ff",
+              "tertiary-fixed": "#7ff4ff",
+              "on-primary-fixed": "#001c39",
+              "on-tertiary-container": "#009ea9",
+              "outline": "#73777f",
+              "on-surface-variant": "#43474e",
+              "on-secondary-fixed-variant": "#1a4a6e",
+              "inverse-primary": "#aac8f6",
+              "on-tertiary-fixed-variant": "#004f55",
+              "primary-fixed-dim": "#aac8f6",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#a0cbf5",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#001d32",
+              "outline-variant": "#c3c6cf",
+              "secondary": "#366287",
+              "primary-container": "#00284d",
+              "on-tertiary-fixed": "#002022",
+              "tertiary-fixed-dim": "#4bd9e5",
+              "primary": "#00132a",
+              "tertiary-container": "#002d31",
+              "on-primary-fixed-variant": "#29486e",
+              "surface-tint": "#426088",
+              "secondary-fixed": "#cee5ff",
+              "inverse-surface": "#0d3157",
+              "on-primary-container": "#7290bb",
+              "tertiary": "#001619",
+              "error": "#ba1a1a",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#dde9ff",
+              "surface": "#f8f9ff",
+              "inverse-on-surface": "#ebf1ff",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container": "#e6eeff",
+              "on-surface": "#001c39",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#2f5b80",
+              "surface-dim": "#c5dbff",
+              "background": "#f8f9ff",
+              "secondary-container": "#a8d3fe",
+              "surface-container-low": "#eff3ff",
+              "primary-fixed": "#d3e3ff",
+              "surface-bright": "#f8f9ff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 backdrop-blur-md shadow-sm flex items-center justify-between px-6 h-16">
+<div class="flex items-center gap-3"><img alt="2nd Opinion Systems Logo" class="h-10 w-auto object-contain" src="./logo.png"/></div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#d3e3ff]/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#43474e]">notifications</span>
+</button>
+
+</div>
+</header>
+<main class="pt-20 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Header & Search -->
+<section class="mb-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface mb-2">Collaboration Hub</h2>
+<p class="text-on-surface-variant max-w-xl">Share expertise, troubleshoot complex issues, and access the collective knowledge of field technicians.</p>
+</div>
+<div class="relative w-full md:w-96 group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input id="thread-search-input" class="w-full pl-12 pr-4 py-3 bg-surface-container-highest rounded-xl border-none focus:ring-2 focus:ring-primary transition-all text-on-surface placeholder:text-on-surface-variant/60" placeholder="Search technical solutions..." type="text"/>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Categories & Top Solutions -->
+<aside class="lg:col-span-3 space-y-8">
+<!-- Categories -->
+<nav class="space-y-2">
+<h3 class="text-xs font-bold uppercase tracking-wider text-on-surface-variant px-2 mb-4">Categories</h3>
+<a class="cat-filter-link flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer" data-category="">
+<span class="material-symbols-outlined text-lg">apps</span> All Threads
+</a>
+<a class="cat-filter-link flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer" data-category="fault_finding">
+<span class="material-symbols-outlined text-lg">troubleshoot</span> Fault finding help
+</a>
+<a class="cat-filter-link flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer" data-category="parts_advice">
+<span class="material-symbols-outlined text-lg">settings_input_component</span> Parts advice
+</a>
+<a class="cat-filter-link flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer" data-category="software_issues">
+<span class="material-symbols-outlined text-lg">terminal</span> Software issues
+</a>
+<a class="cat-filter-link flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer" data-category="installation_support">
+<span class="material-symbols-outlined text-lg">precision_manufacturing</span> Installation support
+</a>
+</nav>
+<!-- Top Solutions (Bento Style Sidebar) -->
+<div class="bg-surface-container-low rounded-xl p-5 border-l-4 border-tertiary">
+<h3 class="text-sm font-bold uppercase tracking-wider text-on-surface-variant mb-4">Top Solutions</h3>
+<div class="space-y-5">
+<div class="group cursor-pointer">
+<span class="text-[10px] font-bold text-on-tertiary-container bg-tertiary-container/30 px-2 py-0.5 rounded-full">SOLVED</span>
+<h4 class="text-sm font-semibold text-on-surface mt-1 group-hover:text-secondary transition-colors">Calibration error E-102 fix for XL-9000 units</h4>
+<p class="text-xs text-on-surface-variant mt-1 line-clamp-2">The sensor alignment requires a 2mm offset specifically for the 2023 manufacturing run...</p>
+</div>
+<div class="group cursor-pointer">
+<span class="text-[10px] font-bold text-on-tertiary-container bg-tertiary-container/30 px-2 py-0.5 rounded-full">SOLVED</span>
+<h4 class="text-sm font-semibold text-on-surface mt-1 group-hover:text-secondary transition-colors">Bypassing legacy interlock during diagnostic mode</h4>
+</div>
+</div>
+</div>
+</aside>
+<!-- Middle Column: Main Feed -->
+<section class="lg:col-span-6 space-y-6">
+<!-- Post Question Input -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1 space-y-3">
+<input id="post-title-input" type="text" class="w-full bg-surface-container-low border-none rounded-xl p-3 text-sm font-semibold focus:ring-2 focus:ring-primary-container" placeholder="Thread title / question summary…"/>
+<select id="post-category-select" class="w-full bg-surface-container-low border-none rounded-xl p-3 text-sm text-on-surface-variant focus:ring-2 focus:ring-primary-container">
+    <option value="fault_finding">Fault finding help</option>
+    <option value="parts_advice">Parts advice</option>
+    <option value="software_issues">Software issues</option>
+    <option value="installation_support">Installation support</option>
+</select>
+<textarea id="post-textarea" class="w-full bg-surface-container-low border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary-container min-h-[100px] resize-none" placeholder="Describe the issue in detail — model, symptoms, what you've tried…"></textarea>
+
+        <!-- Attachment Previews (hidden until files chosen) -->
+        <div id="attach-preview-strip" class="hidden flex gap-3 flex-wrap"></div>
+
+<div class="flex items-center justify-between">
+<!-- Hidden: photo picker (local gallery + camera capture) -->
+<input type="file" id="photo-file-input" accept="image/*" capture="environment" class="hidden" multiple/>
+<!-- Hidden: schematic / document picker -->
+<input type="file" id="schematic-file-input"
+  accept=".xls,.xlsx,.csv,.pdf,.docx,.doc,.ppt,.pptx,.txt,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  class="hidden" multiple/>
+
+<div class="flex gap-2">
+  <!-- Add Photo button → triggers photo-file-input -->
+  <button id="btn-add-photo"
+    class="p-2 hover:bg-surface-container-highest rounded-lg transition-colors text-on-surface-variant flex items-center gap-2 relative">
+    <span class="material-symbols-outlined text-xl">add_photo_alternate</span>
+    <span class="text-xs font-medium">Add Photo</span>
+    <!-- Photo source chooser tooltip -->
+    <div id="photo-source-menu"
+      class="hidden absolute bottom-full left-0 mb-1 bg-surface-container-lowest border border-outline-variant/30 rounded-xl shadow-xl overflow-hidden z-10 min-w-[170px]">
+      <button id="btn-choose-gallery"
+        class="w-full flex items-center gap-3 px-4 py-3 text-xs font-semibold text-on-surface hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-secondary text-base">photo_library</span>
+        Local Gallery / Files
+      </button>
+      <div class="h-px bg-outline-variant/20 mx-3"></div>
+      <button id="btn-use-camera"
+        class="w-full flex items-center gap-3 px-4 py-3 text-xs font-semibold text-on-surface hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-secondary text-base">photo_camera</span>
+        Take Photo (Camera)
+      </button>
+    </div>
+  </button>
+
+  <!-- Schematic button → triggers schematic-file-input -->
+  <button id="btn-add-schematic"
+    class="p-2 hover:bg-surface-container-highest rounded-lg transition-colors text-on-surface-variant flex items-center gap-2">
+    <span class="material-symbols-outlined text-xl">attach_file</span>
+    <span class="text-xs font-medium">Schematic</span>
+  </button>
+</div>
+
+<button id="btn-post-thread" class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-2 rounded-lg text-sm font-semibold shadow-lg active:scale-95 transition-transform">Post Thread</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Discussion Cards — populated by main.js -->
+<div id="thread-feed" class="space-y-6">
+<div class="animate-pulse space-y-4">
+    <div class="h-32 bg-outline-variant/20 rounded-xl"></div>
+    <div class="h-28 bg-outline-variant/15 rounded-xl"></div>
+</div>
+</div>
+</section>
+<!-- Right Column: Community Stats & Active Technicians -->
+<aside class="lg:col-span-3 space-y-6">
+<!-- Stats Bento (live) -->
+<div class="bg-primary text-on-primary p-6 rounded-xl space-y-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-primary-container flex items-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-pulse"></span>
+    Live Activity
+</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="text-center">
+<p id="stat-active-techs" class="text-2xl font-black text-white">—</p>
+<p class="text-[10px] uppercase font-medium text-on-primary-container">Active Techs</p>
+</div>
+<div class="text-center">
+<p id="stat-open-threads" class="text-2xl font-black text-white">—</p>
+<p class="text-[10px] uppercase font-medium text-on-primary-container">Open Threads</p>
+</div>
+</div>
+</div>
+<!-- Top Contributors (live) -->
+<div class="bg-surface-container-low rounded-xl p-5">
+<h3 class="text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-4">Top Contributors</h3>
+<div id="contributors-list" class="space-y-4">
+<p class="text-xs text-on-surface-variant italic text-center py-2 animate-pulse">Loading…</p>
+</div>
+</div>
+<!-- Quick Links -->
+<div class="p-2">
+<button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-highest transition-colors text-on-surface text-sm font-medium">
+                        View My Threads
+                        <span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-highest transition-colors text-on-surface text-sm font-medium">
+                        Guidelines &amp; Safety
+                        <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-[100] bg-white/90 backdrop-blur-lg shadow-[0_-4px_20px_0_rgba(0,28,57,0.06)] rounded-t-xl border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto flex justify-around items-center px-4 py-3 pb-safe h-18">
+<a class="flex flex-col items-center justify-center text-[#43474e] hover:text-[#00284D] hover:bg-surface-container-highest/50 rounded-xl px-5 py-2 active:scale-95 transition-all duration-150" href="./dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#43474e] hover:text-[#00284D] hover:bg-surface-container-highest/50 rounded-xl px-5 py-2 active:scale-95 transition-all duration-150" href="./service_operations.html">
+<span class="material-symbols-outlined">build</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider mt-1">Service</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#d3e3ff] text-[#00132a] rounded-xl px-5 py-2 active:scale-95 transition-all duration-150" href="./discussion_portal.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider mt-1">Discussion</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#43474e] hover:text-[#00284D] hover:bg-surface-container-highest/50 rounded-xl px-5 py-2 active:scale-95 transition-all duration-150" href="./profile.html">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider mt-1">Profile</span>
+</a>
+</div>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // ===== FILE ATTACHMENT HANDLING =====
+    const photoInput      = document.getElementById('photo-file-input');
+    const schematicInput  = document.getElementById('schematic-file-input');
+    const btnPhoto        = document.getElementById('btn-add-photo');
+    const btnSchematic    = document.getElementById('btn-add-schematic');
+    const photoSourceMenu = document.getElementById('photo-source-menu');
+    const btnGallery      = document.getElementById('btn-choose-gallery');
+    const btnCamera       = document.getElementById('btn-use-camera');
+    const previewStrip    = document.getElementById('attach-preview-strip');
+
+    // Track attached files for the current post
+    let attachedImages = [];
+    let attachedDocs   = [];
+
+    // Toggle photo source menu
+    btnPhoto.addEventListener('click', (e) => {
+        e.stopPropagation();
+        photoSourceMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', () => photoSourceMenu.classList.add('hidden'));
+
+    // Gallery / local files — no capture attribute restriction
+    btnGallery.addEventListener('click', (e) => {
+        e.stopPropagation();
+        photoSourceMenu.classList.add('hidden');
+        photoInput.removeAttribute('capture');
+        photoInput.click();
+    });
+
+    // Camera capture — forces device camera
+    btnCamera.addEventListener('click', (e) => {
+        e.stopPropagation();
+        photoSourceMenu.classList.add('hidden');
+        photoInput.setAttribute('capture', 'environment');
+        photoInput.click();
+    });
+
+    // Schematic button
+    btnSchematic.addEventListener('click', () => schematicInput.click());
+
+    // Handle photo file selection
+    photoInput.addEventListener('change', () => {
+        Array.from(photoInput.files).forEach(file => {
+            const url = URL.createObjectURL(file);
+            attachedImages.push({ file, url });
+            addImagePreview(url, file.name);
+        });
+        photoInput.value = '';
+    });
+
+    // Handle schematic/doc file selection
+    schematicInput.addEventListener('change', () => {
+        Array.from(schematicInput.files).forEach(file => {
+            const ext = file.name.split('.').pop().toUpperCase();
+            attachedDocs.push({ file, ext });
+            addDocPreview(file.name, ext);
+        });
+        schematicInput.value = '';
+    });
+
+    function addImagePreview(url, name) {
+        previewStrip.classList.remove('hidden');
+        const wrap = document.createElement('div');
+        wrap.className = 'relative w-20 h-20 rounded-xl overflow-hidden shadow border border-outline-variant/20 flex-shrink-0 group';
+        wrap.innerHTML = `
+          <img src="${url}" alt="${name}" class="w-full h-full object-cover"/>
+          <button class="remove-preview absolute top-0.5 right-0.5 w-5 h-5 bg-error rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="material-symbols-outlined text-white text-[11px]" style="font-variation-settings:'FILL' 1">close</span>
+          </button>`;
+        wrap.querySelector('.remove-preview').addEventListener('click', () => {
+            attachedImages = attachedImages.filter(a => a.url !== url);
+            wrap.remove();
+            if (!previewStrip.children.length) previewStrip.classList.add('hidden');
+        });
+        previewStrip.appendChild(wrap);
+    }
+
+    function addDocPreview(name, ext) {
+        previewStrip.classList.remove('hidden');
+        const extColors = { XLS:'bg-[#1d6f42]', XLSX:'bg-[#1d6f42]', CSV:'bg-[#1d6f42]',
+                            PDF:'bg-[#D44638]', DOCX:'bg-[#2b579a]', DOC:'bg-[#2b579a]',
+                            PPT:'bg-[#d04423]', PPTX:'bg-[#d04423]' };
+        const color = extColors[ext] || 'bg-secondary';
+        const wrap = document.createElement('div');
+        wrap.className = 'relative flex-shrink-0 group';
+        wrap.innerHTML = `
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl border border-outline-variant/20 bg-surface-container-low shadow-sm max-w-[180px]">
+            <div class="w-8 h-8 rounded-lg ${color} flex items-center justify-center flex-shrink-0">
+              <span class="text-white text-[10px] font-black">${ext.substring(0,4)}</span>
+            </div>
+            <div class="min-w-0">
+              <p class="text-[11px] font-semibold text-on-surface truncate">${name}</p>
+              <p class="text-[9px] text-on-surface-variant">${ext} Document</p>
+            </div>
+            <button class="remove-preview ml-auto w-5 h-5 bg-error/10 hover:bg-error rounded-full flex items-center justify-center transition-colors group flex-shrink-0">
+              <span class="material-symbols-outlined text-error group-hover:text-white text-[11px]" style="font-variation-settings:'FILL' 1">close</span>
+            </button>
+          </div>`;
+        wrap.querySelector('.remove-preview').addEventListener('click', () => {
+            attachedDocs = attachedDocs.filter(d => d.file.name !== name);
+            wrap.remove();
+            if (!previewStrip.children.length) previewStrip.classList.add('hidden');
+        });
+        previewStrip.appendChild(wrap);
+    }
+
+    // ===== POST THREAD =====
+    const btnPost    = document.getElementById('btn-post-thread');
+    const textarea   = document.getElementById('post-textarea');
+    const threadFeed = document.getElementById('thread-feed');
+
+    if (btnPost && textarea && threadFeed) {
+        btnPost.addEventListener('click', () => {
+            const content = textarea.value.trim();
+            if (!content && !attachedImages.length && !attachedDocs.length) return;
+
+            const now = new Date();
+
+            // Build image grid HTML
+            let imgHTML = '';
+            if (attachedImages.length) {
+                const gridCols = attachedImages.length === 1 ? 'grid-cols-1' : 'grid-cols-2';
+                imgHTML = `<div class="grid ${gridCols} gap-2 mb-4">`;
+                attachedImages.forEach(a => {
+                    imgHTML += `<div class="aspect-video bg-surface rounded-lg overflow-hidden">
+                        <img src="${a.url}" alt="${a.file.name}" class="w-full h-full object-cover"/>
+                    </div>`;
+                });
+                imgHTML += `</div>`;
+            }
+
+            // Build doc attachments HTML
+            let docHTML = '';
+            if (attachedDocs.length) {
+                const extColors = { XLS:'bg-[#1d6f42]', XLSX:'bg-[#1d6f42]', CSV:'bg-[#1d6f42]',
+                                    PDF:'bg-[#D44638]', DOCX:'bg-[#2b579a]', DOC:'bg-[#2b579a]',
+                                    PPT:'bg-[#d04423]', PPTX:'bg-[#d04423]' };
+                docHTML = '<div class="flex flex-wrap gap-2 mb-4">';
+                attachedDocs.forEach(d => {
+                    const ext = d.ext;
+                    const color = extColors[ext] || 'bg-secondary';
+                    docHTML += `
+                        <div class="flex items-center gap-2 px-3 py-2 rounded-xl border border-outline-variant/20 bg-surface-container-low shadow-sm">
+                            <div class="w-8 h-8 rounded-lg ${color} flex items-center justify-center flex-shrink-0">
+                              <span class="text-white text-[10px] font-black">${ext.substring(0,4)}</span>
+                            </div>
+                            <div>
+                              <p class="text-[11px] font-semibold text-on-surface truncate max-w-[120px]">${d.file.name}</p>
+                              <p class="text-[9px] text-on-surface-variant">${ext} • ${(d.file.size/1024).toFixed(0)} KB</p>
+                            </div>
+                        </div>`;
+                });
+                docHTML += '</div>';
+            }
+
+            const newPostHTML = `
+            <article class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_12px_rgba(0,0,0,0.03)] border-l-4 border-primary" style="animation:fadeSlideIn 0.3s ease both">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">
+                            ME
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-on-surface">Alex Volkov <span class="text-on-surface-variant font-normal">in</span> Discussion</h4>
+                            <span class="text-xs text-on-surface-variant">Just now &bull; Senior Field Engineer</span>
+                        </div>
+                    </div>
+                </div>
+                ${content ? `<p class="text-on-surface-variant text-sm mb-4 leading-relaxed whitespace-pre-wrap">${content}</p>` : ''}
+                ${imgHTML}
+                ${docHTML}
+                <div class="flex items-center gap-4 pt-3 border-t border-outline-variant/10">
+                    <span class="text-xs text-on-surface-variant flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">thumb_up</span> 0
+                    </span>
+                    <span class="text-xs text-on-surface-variant flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">chat_bubble</span> 0 replies
+                    </span>
+                </div>
+            </article>
+            `;
+
+            threadFeed.insertAdjacentHTML('afterbegin', newPostHTML);
+            textarea.value = '';
+
+            // Clear attachments
+            attachedImages = [];
+            attachedDocs   = [];
+            previewStrip.innerHTML = '';
+            previewStrip.classList.add('hidden');
+
+            const originalText = btnPost.innerText;
+            btnPost.innerText = '\u2713 Posted!';
+            btnPost.classList.add('bg-tertiary-container', 'text-on-tertiary-container');
+            setTimeout(() => {
+                btnPost.innerText = originalText;
+                btnPost.classList.remove('bg-tertiary-container', 'text-on-tertiary-container');
+            }, 1200);
+        });
+    }
+});
+
+</script>
+<script type="module" src="./main.js"></script>
+</body></html>
