@@ -23,7 +23,7 @@ const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 const WHATSAPP_SECRET   = process.env.WHATSAPP_SECRET || '';       // optional shared secret
 const ADMIN_NUMBERS     = process.env.WHATSAPP_ADMIN_NUMBERS || ''; // comma-separated, no +
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Only accept POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
